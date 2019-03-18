@@ -8,21 +8,49 @@
   <body>
     <div class="container">
       <header class="title">Twiddler</header>
-      <div class="newsfeed">
-
+      <div class='tweets'>
+        <section class ='main'>
+        </section>
+        <section class ='newfeed'>
+        </section>
       </div>
       <script>
         $(document).ready(function(){
-          var $body = $('body');
+          var $body = $('.tweets');
 
+          // Creates initial Tweet Feed
           var index = streams.home.length - 1;
           while(index >= 0){
             var tweet = streams.home[index];
-            var $tweet = $('<div></div>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message);
-            $tweet.appendTo($body);
+            var $tweet = $('<div class=tweet></div>');
+            var $user = $('<p class=user></p>');
+            var $message = $('<p class=message></p>');
+
+            $tweet.appendTo('.main');
+            $user.addClass(tweet.user).attr('data-user', tweet.user).text('@' + tweet.user + ' ').appendTo($tweet);
+            $message.text(tweet.message).appendTo($tweet);
+
             index -= 1;
           }
+
+
+          // New Tweet Button
+          var $button = $("<input class='btn new' type=button value='Check New Tweet'>");
+          $button.appendTo($body);
+          $button.on('click', function() {
+            generateRandomTweet();
+
+            var newTweet = streams.home.pop();
+            var $newTweet = $('<div class=tweet></div>');
+            var $newUser = $('<p class=user></p>');
+            var $newMessage = $('<p class=message></p>');
+
+            $newTweet.appendTo('.newfeed');
+            $newUser.addClass(newTweet.user).attr('data-user', newTweet.user).text('@' + newTweet.user + ' ').appendTo($newTweet);
+            $newMessage.text(newTweet.message).appendTo($newTweet);
+          });
+
+
         });
       </script>
     </div>
