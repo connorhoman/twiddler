@@ -60,10 +60,12 @@
           $('.tweets').on('click', '.tweet .user', function(){
             var user = $(this).data('user');
             var $timeline = $('<h1 class=timeline>'+ user +'\'s Timeline</h1>');
+            
             $('.timeline').remove();
             $timeline.prependTo($body);
 
-            
+            $('.tweet').not("div:contains('" + user + "')").hide(400);
+            $("div:contains('" + user + "')").show(400);
 
           });
         });
