@@ -20,7 +20,7 @@
 
           // Creates initial Tweet Feed
           var index = streams.home.length - 1;
-          while(index >= 0){
+          while (index >= 0) {
             var tweet = streams.home[index];
             var $tweet = $('<div class=tweet></div>');
             var $user = $('<p class=user></p>');
@@ -53,6 +53,18 @@
             $newUser.addClass(newTweet.user).attr('data-user', newTweet.user).text('@' + newTweet.user + ' ').appendTo($newTweet);
             $newMessage.text(newTweet.message).appendTo($newTweet);
             $newDateTime.text(newTweet.created_at).appendTo($newTweet);
+          });
+
+          // Link Username to a User's Feed
+
+          $('.tweets').on('click', '.tweet .user', function(){
+            var user = $(this).data('user');
+            var $timeline = $('<h1 class=timeline>'+ user +'\'s Timeline</h1>');
+            $('.timeline').remove();
+            $timeline.prependTo($body);
+
+            
+
           });
         });
       </script>

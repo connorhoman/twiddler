@@ -61,7 +61,7 @@ body {
 
 /* MY STYLE */
 
-/* Header */
+/* Headers */
 .title {
   overflow: hidden;
   background-color: teal;
@@ -73,8 +73,20 @@ body {
   padding-bottom: 20px;
   padding-top: 20px;
   font-family: cursive;
-
 }
+
+.timeline {
+  overflow: hidden;
+  background-color: teal;
+  letter-spacing: 5px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-family: cursive;
+}
+
 
 /* Tweets */
 .tweet {
@@ -91,6 +103,7 @@ body {
   float: right;
   padding: 5px 2px;
   margin-top: 5px;
+  font-family: Arial;
 }
 
 .user {
@@ -98,7 +111,14 @@ body {
   font-size: 24px;
   color: blue;
   margin: 10px;
-
+}
+.user:hover {
+  text-align: left;
+  font-size: 24px;
+  color: blue;
+  margin: 10px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .message {
@@ -110,7 +130,8 @@ body {
   text-align: center;
   line-height: 100px;
   background-color: rgb(193, 193, 193);
-  text-overflow: clip;
+
+  word-wrap: break-word;
 }
 
 /* New Tweet Button */
